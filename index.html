@@ -9,7 +9,7 @@
     <meta name="description" content="TO DO">
     <meta name="google" content="notranslate">
     <link rel="icon" type="image/x-icon" href="https://s.gravatar.com/avatar/1670879794aed7c23742e5b1f759be94?s=40">
-    <link rel="stylesheet" href="../css/ecss.css">
+    <link rel="stylesheet" href="../css/template.css">
     <style>
         div.container {
             counter-reset: refCounter 0;
@@ -44,6 +44,8 @@
         div.content h3::before {
             content: counter(exampleCounter) "." counter(itemCounter) ".  ";
         }
+
+
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,77 +57,75 @@
 <body>
     <div class="container">
         <div class="grid-container">
-            <div class="grid-item-1">
+            <header>
                 <div class="banner-container">
                     <div class="banner-item-1">
-                        <a href="../index.html">
+                        <a href="https://tomgdow.com">
                             <img src="https://s.gravatar.com/avatar/1670879794aed7c23742e5b1f759be94?s=40"
                                 alt="gravatar image of tomgdow">
                         </a>
                     </div>
-                </div><!-- banner-container -->
+                </div>
                 <div class="banner-item-2">
-                    <span id="banner_part_first">html </span>
+                    <span id="banner_part_first">[DONT PUT ANYTHING HERE!--use template]</span>
                     <span class="primary-orange" id="banner_part_second"></span>
                 </div>
-            </div><!--grid-item-1 -->
-            <div class="grid-item-2"></div>
-            <div class="grid-item-3">
-                <div class="site-container">
-                    <div class="content"><noscript>Warning! This browser does not use JavaScript</noscript></div>
-                    <div id="navbar">
-                        <a href="PREV.html" id="prevPage" accesskey="p">prev</a>&nbsp;&nbsp;
-                        <a href="../index.html" accesskey="h">home</a>&nbsp;&nbsp;
-                        <a href="NEXT.html" id="nextPage" accesskey="n">next</a>&nbsp;&nbsp;
-                        <a href="./search.html" accesskey="s">search</a>
-                    </div>
+            </header>
+            <nav>
+                <h1>Nav</h1>
+            </nav>
+            <div class="aside-right">
+                <h1>Right</h1>
+            </div>
+            <main>
+                <h1>Main</h1>
+            </main>
+            <div class="aside-left">
+                <h1>Left</h1>
+            </div>
 
-                    <h2 id="pageTitle">DONT ADD ANYTHING HERE!</h2>
-                    <div class="content"></div><!--content-->
+            <footer>
+                <h1>Footer</h1>
+            </footer>
 
-                    <h2>Example</h2>
-                    <div class="content"></div><!--content-->
-
-                    <h2>Notes</h2>
-                    <div class="content"></div><!--content-->
-
-                    <h2>Mnemonic</h2>
-                    <div class="content"></div><!--content-->
-
-                    <h2>References</h2>
-                    <div class="content ref"></div><!--content-->
-                </div>
-            </div><!-- grid-item-3 -->
         </div><!-- grid-container -->
-
         <!--  Templates -->
 
-
         <template id="prevPageTemplate">index</template> <!--PREVIOUS PAGE-->
+
+        <template id="bannerTitleFirstPartTemplate">First part of</template> <!--PAGE TITLE-->
 
         <template id="pageTitleTemplate">myTitle</template> <!--PAGE TITLE-->
 
         <template id="nextPageTemplate">index</template><!--NEXT PAGE-->
 
+        <script>
+            var title = document.title;
+            document.getElementById("banner_part_second").innerHTML = "&nbsp;" + title
+
+
+
+            //banner title first part
+            var bannerTitleTextFirst = bannerTitleFirstPartTemplate.innerHTML;
+            document.getElementById("banner_part_first").innerHTML = bannerTitleTextFirst;
+
+            //page title
+            var pageTitleText = pageTitleTemplate.innerHTML;
+            document.title = pageTitleText;
+            banner_part_second.innerHTML = "&nbsp;" + pageTitleText;
+            pageTitle.innerHTML = pageTitleText;
+
+            // previous page
+            var prevPageURL = "./" + prevPageTemplate.innerHTML + ".html"
+            prevPage.setAttribute("href", prevPageURL)
+
+            // next page
+            var nextPageURL = "./" + nextPageTemplate.innerHTML + ".html"
+            nextPage.setAttribute("href", nextPageURL)
+
+        </script>
 
     </div><!--container-->
-    <script>
-
-        //page title
-        var pageTitleText = pageTitleTemplate.innerHTML;
-        document.title = pageTitleText;
-        banner_part_second.innerHTML = "&nbsp;" + pageTitleText;
-        pageTitle.innerHTML = pageTitleText;
-
-        // previous page
-        var prevPageURL = "./" + prevPageTemplate.innerHTML + ".html"
-        prevPage.setAttribute("href", prevPageURL)
-
-        // next page
-        var nextPageURL = "./" + nextPageTemplate.innerHTML + ".html"
-        nextPage.setAttribute("href", nextPageURL)
-
-    </script>
 </body>
 
 </html>
