@@ -199,7 +199,7 @@ div.banner-item-2 {
   font-size: 1.7rem;
 }
 
-@media only screen and (max-width: 812px) and (orientation: landscape) {
+@media only screen and (max-width: 850px) and (orientation: landscape) {
 
   nav,
   main,
