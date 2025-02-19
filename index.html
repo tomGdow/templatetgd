@@ -44,8 +44,6 @@
         div.content h3::before {
             content: counter(exampleCounter) "." counter(itemCounter) ".  ";
         }
-
-
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -65,62 +63,66 @@
                                 alt="gravatar image of tomgdow">
                         </a>
                     </div>
-                </div>
-                <div class="banner-item-2">
-                    <span id="banner_part_first">[DONT PUT ANYTHING HERE!--use template]</span>
-                    <span class="primary-orange" id="banner_part_second"></span>
+
+                    <div class="banner-item-2">
+                        <span class="banner_part_first">[DONT PUT ANYTHING HERE!-use template]</span>
+                        <span class="banner_part_second">done</span>
+                    </div>
+
                 </div>
             </header>
+
             <nav>
-                <h1>Nav</h1>
+                <div id="navbar">
+                    <a href="PREV.html" id="prevPage" accesskey="p">prev</a>&nbsp;&nbsp;
+                    <a href="../index.html" accesskey="h">home</a>&nbsp;&nbsp;
+                    <a href="NEXT.html" id="nextPage" accesskey="n">next</a>&nbsp;&nbsp;
+                </div><!-- navbar -->
             </nav>
+
             <div class="aside-right">
                 <h1>Right</h1>
-            </div>
+            </div><!-- aside-right--->
+
             <main>
                 <h1>Main</h1>
             </main>
             <div class="aside-left">
                 <h1>Left</h1>
-            </div>
+            </div><!-- aside left -->
 
             <footer>
                 <h1>Footer</h1>
             </footer>
 
         </div><!-- grid-container -->
+
         <!--  Templates -->
-
-        <template id="prevPageTemplate">index</template> <!--PREVIOUS PAGE-->
-
-        <template id="bannerTitleFirstPartTemplate">First part of</template> <!--PAGE TITLE-->
-
-        <template id="pageTitleTemplate">myTitle</template> <!--PAGE TITLE-->
-
-        <template id="nextPageTemplate">index</template><!--NEXT PAGE-->
+        <template id="prevPageTemplate">prevPage</template><!-- PREVIOUS PAGE -->
+        <template id="bannerTitleFirstPartTemplate">First part of</template><!-- PAGE TITLE -->
+        <template id="pageTitleTemplate">myTitle</template><!-- PAGE TITLE -->
+        <template id="nextPageTemplate">nextPage</template><!-- NEXT PAGE -->
 
         <script>
-            var title = document.title;
-            document.getElementById("banner_part_second").innerHTML = "&nbsp;" + title
 
-
-
-            //banner title first part
+            // banner first part
             var bannerTitleTextFirst = bannerTitleFirstPartTemplate.innerHTML;
-            document.getElementById("banner_part_first").innerHTML = bannerTitleTextFirst;
+            document.getElementsByClassName("banner_part_first")[0].innerHTML = bannerTitleTextFirst;
 
-            //page title
+
+            // page title
             var pageTitleText = pageTitleTemplate.innerHTML;
             document.title = pageTitleText;
-            banner_part_second.innerHTML = "&nbsp;" + pageTitleText;
-            pageTitle.innerHTML = pageTitleText;
+
+            // banner second part
+            document.getElementsByClassName("banner_part_second")[0].innerHTML = "&nbsp;" + pageTitleText;
 
             // previous page
-            var prevPageURL = "./" + prevPageTemplate.innerHTML + ".html"
+            var prevPageURL = "./html/" + prevPageTemplate.innerHTML + ".html"
             prevPage.setAttribute("href", prevPageURL)
 
             // next page
-            var nextPageURL = "./" + nextPageTemplate.innerHTML + ".html"
+            var nextPageURL = "./html/" + nextPageTemplate.innerHTML + ".html"
             nextPage.setAttribute("href", nextPageURL)
 
         </script>
