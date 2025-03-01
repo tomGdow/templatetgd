@@ -1,0 +1,45 @@
+/* div.container { */
+/* counter-reset: mainCounter 0; */
+/* counter-reset: indexCounter 0; */
+/* } */
+
+div.container {
+    counter-reset: mainCounter 0 refCounter 0 indexCounter 1;
+}
+
+div.container .count {
+    counter-increment: mainCounter;
+}
+
+div.container .count::before {
+    content: counter(mainCounter) ".  "
+}
+
+div.container .icount {
+    counter-increment: indexCounter;
+}
+
+div.container .icount::before {
+    content: counter(indexCounter) ".  "
+}
+
+.ref {
+    counter-increment: refCounter;
+}
+
+.ref::before {
+    content: counter(refCounter) ".  ";
+    color: var(--primary-green);
+}
+
+/* div.content {
+    counter-reset: itemCounter 0;
+} */
+
+/* div.content h3 {
+    counter-increment: itemCounter;
+} */
+
+/* div.content h3::before {
+    content: counter(exampleCounter) "." counter(itemCounter) ".  ";
+} */

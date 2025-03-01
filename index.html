@@ -2,132 +2,158 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <title>[PAGE TITLE]</title>
-    <meta name="viewport" content="width=device-width initial-scale=1.0">
-    <meta name="keywords" content="TO,DO">
-    <meta name="description" content="TO DO">
-    <meta name="google" content="notranslate">
-    <link rel="icon" type="image/x-icon" href="https://s.gravatar.com/avatar/1670879794aed7c23742e5b1f759be94?s=40">
-    <link rel="stylesheet" href="../css/template.css">
-    <style>
-        div.container {
-            counter-reset: refCounter 0;
-            counter-reset: exampleCounter 0;
-        }
+  <meta charset="utf-8">
+  <title>[PAGE TITLE]</title><!-- Use JavaScript (constants_variables.js)-->
+  <meta name="viewport" content="width=device-width initial-scale=1.0">
+  <meta name="keywords" content="TO,DO">
+  <meta name="description" content="TO DO">
+  <meta name="google" content="notranslate">
+  <link rel="icon" type="image/x-icon" href="https://s.gravatar.com/avatar/1670879794aed7c23742e5b1f759be94?s=40">
 
-        div.container .example {
-            counter-increment: exampleCounter;
-        }
+  <link rel="stylesheet" href="./css/main.css"><!-- EXTERNAL STYLESHEET -->
 
-        div.container .example::before {
-            content: counter(exampleCounter) ".  "
-        }
+  <style>
+    @import url("./css/counters.css");
 
-        .ref {
-            counter-increment: refCounter;
-        }
+    main {
+      min-height: 70vh;
+      grid-template-areas: "a" "b" "b" "b" "b";
+      grid-template-columns: 1fr;
+    }
 
-        .ref::before {
-            content: counter(refCounter) ".  ";
-            color: var(--primary-green);
-        }
+    h1,
+    h2 {
+      text-align: center;
+    }
 
-        div.content {
-            counter-reset: itemCounter 0;
-        }
+    main>header {
+      grid-area: a;
+    }
 
-        div.content h3 {
-            counter-increment: itemCounter;
-        }
+    main>article {
+      grid-area: b;
+    }
+  </style>
 
-        div.content h3::before {
-            content: counter(exampleCounter) "." counter(itemCounter) ".  ";
-        }
-    </style>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-        rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    rel="stylesheet">
+
 </head>
 
 <body>
-    <div class="container">
-        <div class="grid-container">
-            <header>
-                <div class="banner-container">
-                    <div class="banner-item-1">
-                        <a href="https://tomgdow.com">
-                            <img src="https://s.gravatar.com/avatar/1670879794aed7c23742e5b1f759be94?s=40"
-                                alt="gravatar image of tomgdow">
-                        </a>
-                    </div>
+  <div class="container">
+    <div class="grid-container">
+      <header class="main_header">
+        <div class="banner">
 
-                    <div class="banner-item-2">
-                        <span class="banner_part_first">[DONT PUT ANYTHING HERE!-use template]</span>
-                        <span class="banner_part_second">done</span>
-                    </div>
+          <div class="banner-item-1">
+            <a href="https://tomgdow.com">
+              <img src="https://s.gravatar.com/avatar/1670879794aed7c23742e5b1f759be94?s=40"
+                alt="gravatar image of tomgdow">
+            </a>
+          </div>
 
-                </div>
-            </header>
+          <div class="banner-item-2"><!-- [JavaScript automatically inserts] --></div>
+          <div class="banner-item-3"><!-- [Use JavaScript (constants_variables.js)] --></div>
 
-            <nav>
-                <div id="navbar">
-                    <a href="PREV.html" id="prevPage" accesskey="p">prev</a>&nbsp;&nbsp;
-                    <a href="../index.html" accesskey="h">home</a>&nbsp;&nbsp;
-                    <a href="NEXT.html" id="nextPage" accesskey="n">next</a>&nbsp;&nbsp;
-                </div><!-- navbar -->
-            </nav>
+        </div><!-- banner-->
+      </header>
 
-            <div class="aside-right">
-                <h1>Right</h1>
-            </div><!-- aside-right--->
+      <nav>
+        <a href="../index.html" accesskey="h">home</a>
+        <a href="PREV.html" id="prevPage" accesskey="p">prev</a>
+        <a href="NEXT.html" id="nextPage" accesskey="n">next</a>
+        <a href="../html/search.html" accesskey="s">search</a>
+      </nav>
 
-            <main>
-                <h1>Main</h1>
-            </main>
-            <div class="aside-left">
-                <h1>Left</h1>
-            </div><!-- aside left -->
+      <div class="aside-right">
+        <h1>Right</h1>
+      </div>
 
-            <footer>
-                <h1>Footer</h1>
-            </footer>
+      <main>
 
-        </div><!-- grid-container -->
+        <header>
+          <h1>Title</h1>
+          <h2>Sub Title</h2>
+        </header>
 
-        <!--  Templates -->
-        <template id="prevPageTemplate">prevPage</template><!-- PREVIOUS PAGE -->
-        <template id="bannerTitleFirstPartTemplate">First part of</template><!-- PAGE TITLE -->
-        <template id="pageTitleTemplate">myTitle</template><!-- PAGE TITLE -->
-        <template id="nextPageTemplate">nextPage</template><!-- NEXT PAGE -->
+        <article>
+          <h1 class="align-left">Contents</h1>
+          <div id="myindex"></div>
+        </article>
 
-        <script>
+      </main>
 
-            // banner first part
-            var bannerTitleTextFirst = bannerTitleFirstPartTemplate.innerHTML;
-            document.getElementsByClassName("banner_part_first")[0].innerHTML = bannerTitleTextFirst;
+      <div class="aside-left">
+        <h1>Left</h1>
+      </div>
 
+      <footer>
 
-            // page title
-            var pageTitleText = pageTitleTemplate.innerHTML;
-            document.title = pageTitleText;
+        <div class="footer-item-1">
+          <a href="https://tomgdow.com">
+            <img src="https://s.gravatar.com/avatar/1670879794aed7c23742e5b1f759be94?s=40"
+              alt="gravatar image of tomgdow">
+          </a>
+        </div>
 
-            // banner second part
-            document.getElementsByClassName("banner_part_second")[0].innerHTML = "&nbsp;" + pageTitleText;
+        <div class="footer-item-2">
+          <span id="page_number"></span> of <span id="total_pages"></span>
+        </div>
 
-            // previous page
-            var prevPageURL = "./html/" + prevPageTemplate.innerHTML + ".html"
-            prevPage.setAttribute("href", prevPageURL)
+        <div class="footer-item-3">[Footer-3]</div><!-- [JavaScript automatically inserts] -->
 
-            // next page
-            var nextPageURL = "./html/" + nextPageTemplate.innerHTML + ".html"
-            nextPage.setAttribute("href", nextPageURL)
+      </footer>
 
-        </script>
+    </div><!-- grid-container -->
 
-    </div><!--container-->
+  </div><!--container-->
+
+  <script src="./js/constants_variables.js"></script><!-- JS Constants_variables -->
+  <script src="./js/functions.js"></script><!-- JS Functions-->
+
+  <script>
+
+    // page title
+    document.title = pageTitleArr[pageArr.indexOf(baseFileName)];
+
+    // banner-second-part
+    document.getElementsByClassName("banner-item-2")[0].innerHTML = "&nbsp;" + baseFileName.split("_").map((x) => capitalizeFirstLetter(x)).toString().replace(",", " ");
+
+    // banner-third-part
+    document.getElementsByClassName("banner-item-3")[0].innerHTML = "&nbsp;" + bannerThirdPart;
+
+    // footer-third-part
+    document.getElementsByClassName("footer-item-3")[0].innerHTML = "&nbsp;" + baseFileName;
+
+    // next page
+    var nextPageURL = "./html/" + pageArr[pageArr.indexOf(baseFileName) + 1] + ".html"
+    nextPage.setAttribute("href", nextPageURL);
+
+    // previous page
+    var prevPageURL = "./html/" + pageArr[pageArr.length - 1] + ".html"
+    prevPage.setAttribute("href", prevPageURL);
+  </script>
+
+  <script src="./js/main.js"></script><!-- Main JS file -->
+
+  <script>
+    var parent = document.getElementById('myindex');
+    pageArr.shift();
+
+    // create index
+    for (const element of pageArr) {
+      console.log(element);
+      var customElement = createATag(element.toString(), "./html/" + element + ".html");
+      var customDiv = createIndexTag();
+      customDiv.appendChild(customElement)
+      parent.appendChild(customDiv)
+    }
+  </script>
+
 </body>
 
 </html>

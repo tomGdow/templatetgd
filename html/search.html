@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>[PAGE TITLE]</title><!-- Use JavaScript (constants_variables.js)-->
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <meta name="keywords" content="TO,DO">
+    <meta name="description" content="TO DO">
+    <meta name="google" content="notranslate">
+    <link rel="icon" type="image/x-icon" href="https://s.gravatar.com/avatar/1670879794aed7c23742e5b1f759be94?s=40">
+
+    <link rel="stylesheet" href="../css/main.css"><!-- EXTERNAL STYLESHEET -->
+
+    <style>
+        @import url("../css/counters.css");
+
+        main {
+            min-height: 80vh;
+            /* border: 2px solid green; */
+            grid-template-columns: 1fr;
+            justify-content: center;
+        }
+
+        .searchBoxContainer {
+            padding-top: 5em;
+            display: flex;
+            justify-content: center;
+        }
+
+        main {
+            min-height: 80vh;
+            /* border: 2px solid green; */
+            grid-template-columns: 1fr;
+            justify-content: center;
+        }
+
+        .searchBoxContainer {
+            padding-top: 5em;
+            display: flex;
+            justify-content: center;
+        }
+
+        main {
+            min-height: 80vh;
+            /* border: 2px solid green; */
+            grid-template-columns: 1fr;
+            justify-content: center;
+        }
+
+        .searchBoxContainer {
+            padding-top: 5em;
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="grid-container">
+            <header class="main_header">
+                <div class="banner">
+
+                    <div class="banner-item-1">
+                        <a href="https://tomgdow.com">
+                            <img src="https://s.gravatar.com/avatar/1670879794aed7c23742e5b1f759be94?s=40"
+                                alt="gravatar image of tomgdow">
+                        </a>
+                    </div>
+
+                    <div class="banner-item-2"><!-- [JavaScript automatically inserts] --></div>
+                    <div class="banner-item-3"><!-- [Use JavaScript (constants_variables.js)] --></div>
+
+                </div><!-- banner-->
+            </header>
+
+            <nav>
+                <a href="../index.html" accesskey="h">home</a>
+                <a href="PREV.html" id="prevPage" accesskey="p">prev</a>
+                <a href="NEXT.html" id="nextPage" accesskey="n">next</a>
+                <a href="../html/search.html" accesskey="s">search</a>
+            </nav>
+
+            <div class="aside-right">
+                <!-- <h1>Right</h1> -->
+            </div><!-- aside-right -->
+
+            <main>
+
+                <article>
+
+                    <div class="searchBoxContainer">
+                        <label for="mainSearchBox">Search</label>
+                        <input type="text" id="mainSearchBox" title="search" list="pageList" name="mainSearchBox"
+                            autofocus>
+                        <datalist id="pageList">
+                            <!-- <option value="absolute_example_two"></option> -->
+                        </datalist>
+                    </div><!-- searchBoxContainer -->
+                </article>
+
+            </main>
+
+            <div class="aside-left">
+                <!-- <h1>Left</h1> -->
+            </div><!-- aside left -->
+
+            <footer>
+                <div class="footer-item-1">
+                    <a href="https://tomgdow.com">
+                        <img src="https://s.gravatar.com/avatar/1670879794aed7c23742e5b1f759be94?s=40"
+                            alt="gravatar image of tomgdow">
+                    </a>
+                </div>
+
+                <div class="footer-item-2">
+                    <span id="page_number"></span> of <span id="total_pages"></span>
+                </div>
+
+                <div class="footer-item-3">[Footer-3]</div><!-- [JavaScript automatically inserts] -->
+            </footer>
+
+        </div><!-- grid-container -->
+
+    </div><!--container-->
+
+    <script src="../js/constants_variables.js"></script><!-- JS Constants_variables -->
+    <script src="../js/functions.js"></script><!-- JS Functions-->
+
+    <script>
+
+        // page title
+        document.title = pageTitleArr[pageArr.indexOf(baseFileName)]
+
+        // banner-second-part
+        document.getElementsByClassName("banner-item-2")[0].innerHTML = "&nbsp;" + baseFileName.split("_").map((x) => capitalizeFirstLetter(x)).toString().replace(",", " ");
+
+        // banner-third-part
+        document.getElementsByClassName("banner-item-3")[0].innerHTML = "&nbsp;" + bannerThirdPart;
+
+        // footer-third-part
+        document.getElementsByClassName("footer-item-3")[0].innerHTML = "&nbsp;" + baseFileName;
+
+        // next page
+        var nextPageURL = "../" + pageArr[0] + ".html"
+        nextPage.setAttribute("href", nextPageURL);
+
+        // previous page
+        var prevPageURL = "./" + pageArr[pageArr.indexOf(baseFileName) - 1] + ".html"
+        prevPage.setAttribute("href", prevPageURL);
+
+    </script>
+
+    <script src="../js/main.js"></script><!-- Main JS file -->
+    <script>
+
+        // searchBox EventListener (go to page on match, with a delay of 1 second)
+        document.getElementById('mainSearchBox').addEventListener('input', function () {
+
+            return (async () => {
+                console.log(Date.now());
+                await delay(1);
+                if (pageArr.includes(this.value) && (this.value == 'index' || this.value == 'home')) {
+                    if (this.value == 'home') {
+
+                        location.href = "../index.html"
+                    } else {
+
+                        location.href = "../" + this.value + ".html"
+                    }
+                }
+                else if (pageArr.includes(this.value)) {
+
+                    location.href = "./" + this.value + ".html"
+                }
+
+            })();
+
+        })
+
+        // Create option tags (as children of datelist tag)
+        var parent = document.getElementById("pageList");
+
+        pageArr.pop();
+
+        for (const element of pageArr.sort()) {
+            console.log(element);
+            var customDiv = createOptionTag(element)
+            parent.appendChild(customDiv)
+        }
+    </script>
+
+</body>
+
+</html>
