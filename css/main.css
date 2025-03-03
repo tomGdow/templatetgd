@@ -67,7 +67,8 @@ div.container {
 
 nav {
   grid-area: nav;
-  background-color: lightskyblue;
+  background-color: var(--primary-orange);
+  color: white;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -152,7 +153,7 @@ article code {
   background-color: lightgray;
   display: flex;
   justify-content: left;
-  width: 80%;
+  width: 75%;
   margin: auto;
   padding: 1em 2em;
 }
@@ -254,6 +255,11 @@ label {
     justify-content: center;
     align-items: center;
     background-color: lightgoldenrodyellow;
+  }
+
+  .code-content,
+  .console {
+    width: 80%;
   }
 
 }
