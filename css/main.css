@@ -65,9 +65,18 @@ div.container {
   display: grid;
 }
 
+nav a {
+  color: white;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: var(--primary-orange);
+}
+
 nav {
   grid-area: nav;
-  background-color: var(--primary-orange);
+  background-color: var(--primary-green);
   color: white;
   display: flex;
   justify-content: space-around;
@@ -75,12 +84,20 @@ nav {
   font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-style: normal;
+  width: 90%;
+  margin: 0 auto;
+  border-radius: .2em;
+
 }
 
 main {
   grid-area: main;
   display: grid;
   justify-content: center;
+}
+
+.main_header {
+  border-radius: 0.2em;
 }
 
 footer {
@@ -107,7 +124,7 @@ footer>h1 {
 .banner {
   display: grid;
   justify-content: space-between;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 3fr 1fr;
 }
 
 /* .banner-item-1 { } */
@@ -193,6 +210,10 @@ label {
     grid-template-columns: 1fr 8fr 1fr;
     grid-auto-rows: minmax(40px, auto);
     gap: .5%;
+  }
+
+  .banner {
+    grid-template-columns: 1fr 2fr 1fr;
   }
 
   .banner-item-2,
