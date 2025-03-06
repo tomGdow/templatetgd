@@ -55,8 +55,8 @@
                 alt="gravatar image of tomgdow">
             </a>
           </div>
-
           <div class="banner-item-2"><!-- [JavaScript automatically inserts] --></div>
+          <div class="banner-item-3-alt"><!--pageNumbers. JavaScript automatically inserts --></div>
           <div class="banner-item-3"><!-- [Use JavaScript (constants_variables.js)] --></div>
 
         </div><!-- banner-->
@@ -146,7 +146,7 @@
 
     // create index
     for (const element of pageArr) {
-      console.log(element);
+      // console.log(element);
       var customElement = createATag(element.toString(), "./html/" + element + ".html");
       var customDiv = createIndexTag();
       customDiv.appendChild(customElement)
