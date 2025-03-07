@@ -1,4 +1,13 @@
-const baseFileName = window.location.pathname.split(/[\\/]/).pop().split(".")[0];
+// const baseFileName = window.location.pathname.split(/[\\/]/).pop().split(".")[0];
+
+let baseFileName;
+
+if (window.location.pathname.split(/[\\/]/).pop()) {
+
+    baseFileName = window.location.pathname.split(/[\\/]/).pop().split(".")[0];
+} else {
+    baseFileName = "index"
+}
 
 //Add New FileName(s)
 let pageArr = ["index", "template_first_page"];
