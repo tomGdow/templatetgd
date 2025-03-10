@@ -193,7 +193,7 @@ article code {
   background-color: lightgray;
   display: flex;
   justify-content: left;
-  width: 75%;
+  width: 85%;
   min-width: 0;
   margin: auto;
   padding: 1em 2em;
@@ -228,7 +228,7 @@ label {
 pre {
   white-space: pre-wrap;
   word-wrap: break-word;
-  text-align: left;
+  text-align: start;
 }
 
 @media screen and (min-width: 830px) {
