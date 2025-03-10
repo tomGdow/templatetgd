@@ -126,8 +126,9 @@ footer>h1 {
   display: grid;
   justify-content: space-between;
   /* grid-template-columns: 1fr 3fr 1fr; */
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: auto auto auto;
   border: 2px solid red;
+  min-width: 0;
 
 }
 
@@ -140,14 +141,14 @@ footer>h1 {
   justify-content: center;
   align-items: center;
   border: 2px solid blue;
-  gap: 2em;
-  min-width: 0;
+  /* gap: 1em; */
+  /* min-width: 0; */
 }
 
 .banner-item-3,
 .footer-item-3 {
   display: none;
-  min-width: 0;
+  /* min-width: 0; */
 }
 
 .banner-item-3-alt {
@@ -156,6 +157,8 @@ footer>h1 {
   justify-content: right;
   align-items: center;
   padding-right: 0.5em;
+  min-width: 0;
+  border: 2px solid green;
 
 }
 
