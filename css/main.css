@@ -193,15 +193,15 @@ article code {
   background-color: lightgray;
   display: flex;
   justify-content: left;
-  width: 85%;
+  width: 75%;
   min-width: 0;
   margin: auto;
-  padding: 1em 2em;
+  padding: 1em 1em;
 }
 
 .console {
   color: white;
-  background-color: black;
+  background-color: darkblue;
 }
 
 .icount {
