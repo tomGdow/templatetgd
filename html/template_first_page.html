@@ -22,9 +22,6 @@
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet">
 
-    <!--  Templates -->
-    <!-- <template id="pageTitleTemplate">getting_started (CKR)</template> -->
-
 </head>
 
 <body>
@@ -74,6 +71,7 @@
                         iusto
                         totam cupiditate. Mollitia voluptatem assumenda voluptatibus?
                     </p>
+
                     <pre class="code-content">
 
     #include &lt;stdio.h&gt;
@@ -82,15 +80,6 @@
     {
         printf("Hello world\n");
     } </pre>
-                </article>
-
-                <article>
-                    <h1 class="count">Console Example</h1>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores culpa quasi doloremque, ab
-                        iusto
-                        totam cupiditate. Mollitia voluptatem assumenda voluptatibus?
-                    </p>
                     <pre class="console">
 
 clang helloworld.c -o helloworld.o
@@ -157,7 +146,6 @@ clang helloworld.c -o helloworld.o
         // banner-second-part
         document.getElementsByClassName("banner-item-2")[0].innerHTML = "&nbsp;" + baseFileName.split("_").map((x) => capitalizeFirstLetter(x)).toString().replaceAll(",", " ");
 
-        // document.getElementsByClassName("banner-item-2")[0].innerHTML = "&nbsp;" + baseFileName.split("_").map((x) => capitalizeFirstLetter(x)).map((x) => x.replace(",", " ")).toString();
         // banner-third-part
         document.getElementsByClassName("banner-item-3")[0].innerHTML = "&nbsp;" + bannerThirdPart;
 

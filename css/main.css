@@ -132,7 +132,10 @@ footer>h1 {
 
 }
 
-/* .banner-item-1 { } */
+.banner-item-1 {
+  min-width: 0;
+  border: 3px solid orange;
+}
 
 .banner-item-2,
 .footer-item-2 {
@@ -191,6 +194,7 @@ article code {
   display: flex;
   justify-content: left;
   width: 75%;
+  min-width: 0;
   margin: auto;
   padding: 1em 2em;
 }
@@ -218,6 +222,12 @@ label {
 }
 
 .align-left {
+  text-align: left;
+}
+
+pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
   text-align: left;
 }
 
