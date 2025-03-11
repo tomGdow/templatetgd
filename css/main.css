@@ -193,7 +193,7 @@ article code {
   background-color: lightgray;
   display: flex;
   justify-content: left;
-  width: 75%;
+  width: 80%;
   min-width: 0;
   margin: auto;
   padding: 1em 1em;
@@ -229,6 +229,16 @@ pre {
   white-space: pre-wrap;
   word-wrap: break-word;
   text-align: start;
+}
+
+@media screen and (min-width:450px) {
+
+  .console {
+    color: white;
+    background-color: red;
+  }
+
+
 }
 
 @media screen and (min-width: 830px) {
