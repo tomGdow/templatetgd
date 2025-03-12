@@ -231,7 +231,23 @@ pre {
   text-align: start;
 }
 
+.small-view {
+  display: block;
+}
+
+.wide-view {
+  display: none;
+}
+
 @media screen and (min-width:450px) {
+
+  .small-view {
+    display: none;
+  }
+
+  .wide-view {
+    display: block;
+  }
 
   .console {
     color: white;
