@@ -15,3 +15,15 @@ let el2 = document.querySelectorAll('[name="keywords"]');
 el2[0].setAttribute('content', myKeywordList);
 
 
+
+// document.getElementsByClassName("aside-right")[0].addEventListener('click', function () {
+//     // console.log('hellow')
+//     noNewTab();
+// });
+
+// document.getElementsByClassName("aside-left")[0].addEventListener('click', function () {
+//     // console.log('hellow')
+//     noNewTabMinus();
+// });
+
+

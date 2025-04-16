@@ -41,7 +41,6 @@
         option {
             text-align: center;
         }
-
     </style>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -122,16 +121,16 @@
 
     </div><!--container-->
 
-    <script src="../js/constants_variables.js"></script><!-- JS Constants_variables -->
     <script src="../js/functions.js"></script><!-- JS Functions-->
+    <script src="../js/constants_variables.js"></script><!-- JS Constants_variables -->
 
     <script>
 
         // page title
-        document.title = pageTitleArr[pageArr.indexOf(baseFileName)]
+        document.title = getPageTitle(pageTitleArr, pageArr, baseFileName);
 
         // banner-second-part
-        document.getElementsByClassName("banner-item-2")[0].innerHTML = "&nbsp;" + baseFileName.split("_").map((x) => capitalizeFirstLetter(x)).toString().replace(",", " ");
+        document.getElementsByClassName("banner-item-2")[0].innerHTML = splitAndCapitalize(baseFileName);
 
         // banner-third-part
         document.getElementsByClassName("banner-item-3")[0].innerHTML = "&nbsp;" + bannerThirdPart;
@@ -140,12 +139,10 @@
         document.getElementsByClassName("footer-item-3")[0].innerHTML = "&nbsp;" + baseFileName;
 
         // next page
-        var nextPageURL = "../" + pageArr[0] + ".html"
-        nextPage.setAttribute("href", nextPageURL);
+        nextPage.setAttribute("href", toIndexPageFromSubdir(pageArr));
 
         // previous page
-        var prevPageURL = "./" + pageArr[pageArr.indexOf(baseFileName) - 1] + ".html"
-        prevPage.setAttribute("href", prevPageURL);
+        prevPage.setAttribute("href", prevPageURL(baseFileName, pageArr));
 
     </script>
 
@@ -153,39 +150,59 @@
     <script>
 
         // searchBox EventListener (go to page on match, with a delay of 1 second)
-        document.getElementById('mainSearchBox').addEventListener('input', function () {
+        document.getElementById('mainSearchBox').addEventListener('input', search)
 
-            return (async () => {
-                console.log(Date.now());
-                await delay(1);
-                if (pageArr.includes(this.value) && (this.value == 'index' || this.value == 'home')) {
-                    if (this.value == 'home') {
+        // Create option tags
+        let parent = createOptionTags("pageList", pageArr);
 
-                        location.href = "../index.html"
-                    } else {
+        // document.getElementById('mainSearchBox').addEventListener('input', function () {
 
-                        location.href = "../" + this.value + ".html"
-                    }
-                }
-                else if (pageArr.includes(this.value)) {
+        //     return (async () => {
+        //         console.log(Date.now());
+        //         await delay(1);
+        //         if (pageArr.includes(this.value) && (this.value == 'index' || this.value == 'home')) {
+        //             if (this.value == 'home') {
 
-                    location.href = "./" + this.value + ".html"
-                }
+        //                 location.href = "../index.html"
+        //             } else {
 
-            })();
+        //                 location.href = "../" + this.value + ".html"
+        //             }
+        //         }
+        //         else if (pageArr.includes(this.value)) {
 
-        })
+        //             location.href = "./" + this.value + ".html"
+        //         }
 
-        // Create option tags (as children of datelist tag)
-        var parent = document.getElementById("pageList");
+        //     })();
 
-        pageArr.pop();
+        // })
 
-        for (const element of pageArr.sort()) {
-            console.log(element);
-            var customDiv = createOptionTag(element)
-            parent.appendChild(customDiv)
-        }
+        // document.getElementsByClassName("aside-right")[0].addEventListener('click', function () {
+        //     // console.log('hellow')
+        //     noNewTab();
+        // });
+
+        // document.getElementsByClassName("aside-left")[0].addEventListener('click', function () {
+        //     console.log('hellow')
+        //     // noNewTabMinus();
+        // });
+
+        // var parent = document.getElementById("pageList");
+
+        // pageArr.pop();
+
+        // for (const element of pageArr.sort()) {
+        // console.log(element);
+        // var customDiv = createOptionTag(element)
+        // parent.appendChild(customDiv)
+        // }
+
+        // var prevPageURL = "./" + pageArr[pageArr.indexOf(baseFileName) - 1] + ".html"
+        // prevPage.setAttribute("href", prevPageURL);
+        // toIndexPageFromSubdir(pageArr, directoryGuide = "../");
+        // var nextPageURL = "../" + pageArr[0] + ".html"
+        // nextPage.setAttribute("href", nextPageURL);
     </script>
 
 </body>

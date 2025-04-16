@@ -150,10 +150,10 @@ clang helloworld.c -o helloworld.o
     <script>
 
         // page title
-        document.title = getPageTitle(pageTitleArr, pageArr, baseFileName);
+        document.title = pageTitleArr[pageArr.indexOf(baseFileName)]
 
         // banner-second-part
-        document.getElementsByClassName("banner-item-2")[0].innerHTML = splitAndCapitalize(baseFileName);
+        document.getElementsByClassName("banner-item-2")[0].innerHTML = "&nbsp;" + baseFileName.split("_").map((x) => capitalizeFirstLetter(x)).toString().replaceAll(",", " ");
 
         // banner-third-part
         document.getElementsByClassName("banner-item-3")[0].innerHTML = "&nbsp;" + bannerThirdPart;
@@ -165,13 +165,13 @@ clang helloworld.c -o helloworld.o
         nextPage.setAttribute("href", nextPageURL(baseFileName, pageArr));
 
         // previous page
-        prevPage.setAttribute("href", prevPageURL(baseFileName, pageArr, "../"));
+        prevPage.setAttribute("href", prevPageURL(baseFileName, pageArr));
 
-        
-        // var prevPageURL = "../" + pageArr[pageArr.indexOf(baseFileName) - 1] + ".html"
-        // prevPage.setAttribute("href", prevPageURL);
         // var nextPageURL = "./" + pageArr[pageArr.indexOf(baseFileName) + 1] + ".html"
         // nextPage.setAttribute("href", nextPageURL);
+        // var prevPageURL = "./" + pageArr[pageArr.indexOf(baseFileName) - 1] + ".html"
+        // prevPage.setAttribute("href", prevPageURL);
+
     </script>
 
     <script src="../js/main.js"></script><!-- Main JS file -->

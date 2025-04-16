@@ -112,17 +112,16 @@
 
   </div><!--container-->
 
-  <script src="./js/constants_variables.js"></script><!-- JS Constants_variables -->
   <script src="./js/functions.js"></script><!-- JS Functions-->
+  <script src="./js/constants_variables.js"></script><!-- JS Constants_variables -->
 
   <script>
 
     // page title
-    document.title = pageTitleArr[pageArr.indexOf(baseFileName)];
+    document.title = getPageTitle(pageTitleArr, pageArr, baseFileName);
 
     // banner-second-part
-    document.getElementsByClassName("banner-item-2")[0].innerHTML = "&nbsp;" + baseFileName.split("_").map((x) => capitalizeFirstLetter(x)).toString().replace(",", " ");
-
+    document.getElementsByClassName("banner-item-2")[0].innerHTML = splitAndCapitalize(baseFileName);
 
     // banner-third-part
     document.getElementsByClassName("banner-item-3")[0].innerHTML = "&nbsp;" + bannerThirdPart;
@@ -131,30 +130,16 @@
     document.getElementsByClassName("footer-item-3")[0].innerHTML = "&nbsp;" + baseFileName;
 
     // next page
-    var nextPageURL = "./html/" + pageArr[pageArr.indexOf(baseFileName) + 1] + ".html"
-    nextPage.setAttribute("href", nextPageURL);
+    nextPage.setAttribute("href", nextPageURL(baseFileName, pageArr, "./html/"));
 
     // previous page
-    var prevPageURL = "./html/" + pageArr[pageArr.length - 1] + ".html"
-    prevPage.setAttribute("href", prevPageURL);
-  </script>
+    prevPage.setAttribute("href", prevPageURLfromIndex(baseFileName));
 
+    // Create index (TOC)
+    var parent = createIndexDivs('myindex', pageArr);
+
+  </script>
   <script src="./js/main.js"></script><!-- Main JS file -->
-
-  <script>
-    var parent = document.getElementById('myindex');
-    pageArr.shift();
-
-    // create index
-    for (const element of pageArr) {
-      // console.log(element);
-      var customElement = createATag(element.toString(), "./html/" + element + ".html");
-      var customDiv = createIndexTag();
-      customDiv.appendChild(customElement)
-      parent.appendChild(customDiv)
-    }
-  </script>
-
 </body>
 
 </html>
