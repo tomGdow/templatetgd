@@ -70,7 +70,7 @@
       </nav>
 
       <div class="aside-right">
-        <h1>Right</h1>
+        <div class="right-aside-icon">&raquo;</div>
       </div>
 
       <main>
@@ -88,7 +88,7 @@
       </main>
 
       <div class="aside-left">
-        <h1>Left</h1>
+        <div class="left-aside-icon">&laquo;</div>
       </div>
 
       <footer>
@@ -137,6 +137,38 @@
 
     // Create index (TOC)
     var parent = createIndexDivs('myindex', pageArr);
+
+    // aside-right event listeners
+    document.getElementsByClassName("aside-right")[0].addEventListener('click', function () {
+      window.location.href = nextPageURL(baseFileName, pageArr, "./html/");
+      setBackgroundColor(this.className, "lightblue", 0);
+    });
+
+    document.getElementsByClassName("aside-right")[0].addEventListener('mouseover', function () {
+      displayBlock("right-aside-icon");
+      setBackgroundColor(this.className, "#8cc8dc", 0);
+    });
+
+    document.getElementsByClassName("aside-right")[0].addEventListener('mouseout', function () {
+      displayNone("right-aside-icon");
+      setBackgroundColor(this.className, "lightblue", 0)
+    });
+
+    // aside-left event listeners
+    document.getElementsByClassName("aside-left")[0].addEventListener('click', function () {
+      window.location.href = prevPageURLfromIndex(baseFileName);
+      setBackgroundColor(this.className, "lightblue", 0)
+    });
+
+    document.getElementsByClassName("aside-left")[0].addEventListener('mouseover', function () {
+      displayBlock("left-aside-icon");
+      setBackgroundColor(this.className, "#8cc8dc", 0)
+    });
+
+    document.getElementsByClassName("aside-left")[0].addEventListener('mouseout', function () {
+      displayNone("left-aside-icon");
+      setBackgroundColor(this.className, "lightblue", 0)
+    });
 
   </script>
   <script src="./js/main.js"></script><!-- Main JS file -->

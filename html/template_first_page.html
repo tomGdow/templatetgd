@@ -51,9 +51,13 @@
                 <a href="../html/search.html" accesskey="s">search</a>
             </nav>
 
-            <div id="right-aside" class="aside-right">
-                <!-- <h1>Right</h1> -->
-            </div><!-- aside-right -->
+            <!-- <div id="right-aside" class="aside-right"> -->
+            <!-- <h1>Right</h1> -->
+            <!-- </div>aside-right -->
+
+            <div class="aside-right">
+                <div class="right-aside-icon">&raquo;</div>
+            </div><!--aside-right -->
 
             <main>
                 <article>
@@ -120,8 +124,8 @@ clang helloworld.c -o helloworld.o
             </main>
 
             <div class="aside-left">
-                <!-- <h1>Left</h1> -->
-            </div><!-- aside left -->
+                <div class="left-aside-icon">&laquo;</div>
+            </div>
 
             <footer>
 
@@ -167,7 +171,38 @@ clang helloworld.c -o helloworld.o
         // previous page
         prevPage.setAttribute("href", prevPageURL(baseFileName, pageArr, "../"));
 
-        
+        // aside-right event listeners
+        document.getElementsByClassName("aside-right")[0].addEventListener('click', function () {
+            window.location.href = nextPageURL(baseFileName, pageArr, "./");
+            setBackgroundColor(this.className, "lightblue", 0);
+        });
+
+        document.getElementsByClassName("aside-right")[0].addEventListener('mouseover', function () {
+            displayBlock("right-aside-icon");
+            setBackgroundColor(this.className, "#8cc8dc", 0)
+        });
+
+        document.getElementsByClassName("aside-right")[0].addEventListener('mouseout', function () {
+            displayNone("right-aside-icon");
+            setBackgroundColor(this.className, "lightblue", 0)
+        });
+
+        // aside-left event listeners
+        document.getElementsByClassName("aside-left")[0].addEventListener('click', function () {
+            window.location.href = prevPageURL(baseFileName, pageArr, "../");
+            setBackgroundColor(this.className, "lightblue", 0);
+        });
+
+        document.getElementsByClassName("aside-left")[0].addEventListener('mouseover', function () {
+            displayBlock("left-aside-icon");
+            setBackgroundColor(this.className, "#8cc8dc", 0)
+        });
+
+        document.getElementsByClassName("aside-left")[0].addEventListener('mouseout', function () {
+            displayNone("left-aside-icon");
+            setBackgroundColor(this.className, "lightblue", 0)
+        });
+
         // var prevPageURL = "../" + pageArr[pageArr.indexOf(baseFileName) - 1] + ".html"
         // prevPage.setAttribute("href", prevPageURL);
         // var nextPageURL = "./" + pageArr[pageArr.indexOf(baseFileName) + 1] + ".html"

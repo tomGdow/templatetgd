@@ -93,6 +93,21 @@ function toIndexPageFromSubdir(arr, directoryGuide = "../") {
 
 // prevPage.setAttribute("href", prevPageURL)
 
+function displayBlock(myClass) {
+
+    return document.getElementsByClassName(myClass)[0].style.display = "block";
+}
+
+function displayNone(myClass) {
+
+    return document.getElementsByClassName(myClass)[0].style.display = "none";
+}
+
+function setBackgroundColor(myClass,myColor="lightblue",arrPos=0) {
+
+      return document.getElementsByClassName(myClass)[arrPos].style.background = myColor;
+}
+
 function search() {
 
     return (async () => {
@@ -121,11 +136,11 @@ function createOptionTags(targetId = "pageList", arr = pageArr) {
 
     let parent = document.getElementById(targetId);
 
-    arr.pop();
+    arrModified = arr.slice(0, -1);
 
-    for (const element of arr.sort()) {
+    for (const element of arrModified.sort()) {
         console.log(element);
-        let customDiv = createOptionTag(element)
+        let customDiv = createOptionTag(element);
         parent.appendChild(customDiv);
     }
 

@@ -331,7 +331,7 @@ pre {
     display: grid;
     justify-content: center;
     align-items: center;
-    background-color: lightgoldenrodyellow;
+    /* background-color: lightgoldenrodyellow; */
   }
 
   .aside-right {
@@ -339,12 +339,20 @@ pre {
     display: grid;
     justify-content: center;
     align-items: center;
-    background-color: lightgoldenrodyellow;
+    /* background-color: lightgoldenrodyellow; */
   }
 
   .code-content,
   .console {
     width: 80%;
+  }
+
+  .right-aside-icon,
+  .left-aside-icon {
+    color: var(--primary-green);
+    display: none;
+    font-size: 1.5em;
+
   }
 
 }
