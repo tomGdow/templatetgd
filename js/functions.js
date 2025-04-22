@@ -103,9 +103,9 @@ function displayNone(myClass) {
     return document.getElementsByClassName(myClass)[0].style.display = "none";
 }
 
-function setBackgroundColor(myClass,myColor="lightblue",arrPos=0) {
+function setBackgroundColor(myClass, myColor = "lightblue", arrPos = 0) {
 
-      return document.getElementsByClassName(myClass)[arrPos].style.background = myColor;
+    return document.getElementsByClassName(myClass)[arrPos].style.background = myColor;
 }
 
 function search() {
@@ -145,4 +145,32 @@ function createOptionTags(targetId = "pageList", arr = pageArr) {
     }
 
     return parent;
+}
+
+
+function condRemoveAttribute(condition, tagName, arrPosition, attribute = "open") {
+    if (condition.matches) { // If media query matches
+        document.getElementsByTagName(tagName)[arrPosition].removeAttribute(attribute);
+    } else {
+        console.log("condition does not match!")
+    }
+}
+
+function toggleFirstChildInnerHTML(parentTag, attr, attrHTML, noAttrHTML) {
+    if (parentTag.hasAttribute(attr)) {
+        parentTag.firstElementChild.innerHTML = attrHTML;
+    } else {
+        parentTag.firstElementChild.innerHTML = noAttrHTML;
+    }
+}
+
+function toggleClass(tag, attr = "open", aClass = "console", bClass = "console-small") {
+    if (tag.hasAttribute(attr)) {
+        tag.classList.remove(aClass);
+        tag.firstElementChild.classList.add(bClass);
+    } else {
+        tag.classList.add(aClass);
+        tag.firstElementChild.classList.remove(bClass);
+    }
+
 }
