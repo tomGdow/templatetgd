@@ -38,7 +38,7 @@
                     </div>
 
                     <div class="banner-item-2"><!-- [JavaScript automatically inserts] --></div>
-                    <div class="banner-item-3-alt"><!--pageNumbers. JavaScript automatically inserts --></div>
+                    <div class="banner-item-3-alt"><!--pageNumbers. JavaScript auto inserts --></div>
                     <div class="banner-item-3"><!-- [Use JavaScript (constants_variables.js)] --></div>
 
                 </div><!-- banner-->
@@ -83,8 +83,13 @@
 int main()
   {
     printf("Hello world\n");
-  }</pre>
-                    <pre class="console small-view">
+  }</pre><!-- code-content -->
+
+                    <br class="small-view">
+                    <br class="wide-view">
+                    <details open>
+                        <summary class="console-alt">[JavaScript Inserts]</summary>
+                        <pre class="console small-view">
 
 clang helloworld.c -o 
     zhelloworld.o
@@ -92,16 +97,17 @@ clang helloworld.c -o
 ./helloworld.o
 
 // Hello world
-                            </pre>
-                    <pre class="console wide-view">
+                            </pre><!-- small-view -->
+                        <pre class="console wide-view">
 
 clang helloworld.c -o helloworld.o
 
 ./helloworld.o
 
 // Hello world
-                            </pre>
+                            </pre><!-- wide-view -->
                 </article>
+                </details>
 
                 <article>
                     <h1 class="count">Notes</h1>
@@ -203,10 +209,23 @@ clang helloworld.c -o helloworld.o
             setBackgroundColor(this.className, "lightblue", 0)
         });
 
-        // var prevPageURL = "../" + pageArr[pageArr.indexOf(baseFileName) - 1] + ".html"
-        // prevPage.setAttribute("href", prevPageURL);
-        // var nextPageURL = "./" + pageArr[pageArr.indexOf(baseFileName) + 1] + ".html"
-        // nextPage.setAttribute("href", nextPageURL);
+        // Conditionally remove "open" attribute from details tag 
+        let condition = window.matchMedia("(max-width: 440px)");
+        let target = document.getElementsByTagName("details")[0];
+        window.addEventListener("load",
+            function () {
+                condRemoveAttribute(condition, "details", 0, "open");
+                toggleFirstChildInnerHTML(target, "open", "", "Console");
+                toggleClass(target, "open", "console", "console-small");
+            }
+        );
+
+        target.addEventListener("toggle",
+            function () {
+                toggleFirstChildInnerHTML(this, "open", "", "Console");
+                toggleClass(this, "open", "console", "console-small");
+            }
+        );
     </script>
 
     <script src="../js/main.js"></script><!-- Main JS file -->
