@@ -51,10 +51,6 @@
                 <a href="../html/search.html" accesskey="s">search</a>
             </nav>
 
-            <!-- <div id="right-aside" class="aside-right"> -->
-            <!-- <h1>Right</h1> -->
-            <!-- </div>aside-right -->
-
             <div class="aside-right">
                 <div class="right-aside-icon">&raquo;</div>
             </div><!--aside-right -->
@@ -76,7 +72,9 @@
                         totam cupiditate. Mollitia voluptatem assumenda voluptatibus?
                     </p>
 
-                    <pre class="code-content">
+                    <details open><!--details CODE-->
+                        <summary class="details-code-summary">[JavaScript Inserts]</summary>
+                        <pre class="details-code-aclass">
 
 #include &lt;stdio.h&gt;
         
@@ -84,12 +82,13 @@ int main()
   {
     printf("Hello world\n");
   }</pre><!-- code-content -->
+                    </details><!--details CODE-->
 
                     <br class="small-view">
                     <br class="wide-view">
-                    <details open>
-                        <summary class="console-alt">[JavaScript Inserts]</summary>
-                        <pre class="console small-view">
+                    <details open><!--Details CONSOLE -->
+                        <summary class="details-console-summary">[JavaScript Inserts]</summary>
+                        <pre class="details-console-aclass small-view">
 
 clang helloworld.c -o 
     zhelloworld.o
@@ -98,7 +97,7 @@ clang helloworld.c -o
 
 // Hello world
                             </pre><!-- small-view -->
-                        <pre class="console wide-view">
+                        <pre class="details-console-aclass wide-view">
 
 clang helloworld.c -o helloworld.o
 
@@ -107,7 +106,8 @@ clang helloworld.c -o helloworld.o
 // Hello world
                             </pre><!-- wide-view -->
                 </article>
-                </details>
+                </details><!--details CONSOLE -->
+
 
                 <article>
                     <h1 class="count">Notes</h1>
@@ -119,14 +119,17 @@ clang helloworld.c -o helloworld.o
                 </article>
 
                 <article>
+                    <h1 class="count refs-heading">References</h1>
+                    <details open><!-- Details REFS -->
+                        <summary class="details-refs-summary">[JavaScript Inserts]</summary>
+                        <div class="details-refs-aclass">
+                            <div class="ref">
+                                <a href="https://www.google.ie">Google</a>
+                            </div>
 
-                    <h1 class="count">References</h1>
-                    <div class="ref">
-                        <a href="https://www.google.ie">Google</a>
-                    </div>
-
+                        </div>
+                    </details><!-- Details REFS -->
                 </article>
-
             </main>
 
             <div class="aside-left">
@@ -176,6 +179,7 @@ clang helloworld.c -o helloworld.o
 
         // previous page
         prevPage.setAttribute("href", prevPageURL(baseFileName, pageArr, "../"));
+        // prevPage.setAttribute("href", prevPageURL(baseFileName, pageArr));[template-second-page-CHANGE]
 
         // aside-right event listeners
         document.getElementsByClassName("aside-right")[0].addEventListener('click', function () {
@@ -196,6 +200,7 @@ clang helloworld.c -o helloworld.o
         // aside-left event listeners
         document.getElementsByClassName("aside-left")[0].addEventListener('click', function () {
             window.location.href = prevPageURL(baseFileName, pageArr, "../");
+            // window.location.href = prevPageURL(baseFileName, pageArr, "./");[Template-seond-page-CHANGE]
             setBackgroundColor(this.className, "lightblue", 0);
         });
 
@@ -211,21 +216,44 @@ clang helloworld.c -o helloworld.o
 
         // Conditionally remove "open" attribute from details tag 
         let condition = window.matchMedia("(max-width: 440px)");
-        let target = document.getElementsByTagName("details")[0];
+        let targets = document.getElementsByTagName("details");
         window.addEventListener("load",
             function () {
                 condRemoveAttribute(condition, "details", 0, "open");
-                toggleFirstChildInnerHTML(target, "open", "", "Console");
-                toggleClass(target, "open", "console", "console-small");
+                condRemoveAttribute(condition, "details", 1, "open");
+                condRemoveAttribute(condition, "details", 2, "open");
+
+                toggleFirstChildInnerHTML(targets[0], "open", "", "Code");
+                toggleFirstChildInnerHTML(targets[1], "open", "", "Console");
+                toggleFirstChildInnerHTML(targets[2], "open", "", "Bibliography");
+                toggleClass(targets[0], "open", "details-code-aclass", "details-code-bclass");
+                toggleClass(targets[1], "open", "details-console-aclass", "details-console-bclass");
+                toggleClass(targets[2], "open", "details-refs-aclass", "details-refs-bclass");
             }
         );
 
-        target.addEventListener("toggle",
+        // Event Listeners on Details tags 
+        targets[0].addEventListener("toggle",
             function () {
-                toggleFirstChildInnerHTML(this, "open", "", "Console");
-                toggleClass(this, "open", "console", "console-small");
+                toggleFirstChildInnerHTML(this, "open", "", "Code");
+                toggleClass(this, "open", "details-code-aclass", "details-code-bclass");
             }
         );
+
+        targets[1].addEventListener("toggle",
+            function () {
+                toggleFirstChildInnerHTML(this, "open", "", "Console");
+                toggleClass(this, "open", "details-console-aclass", "details-console-bclass");
+            }
+        );
+
+        targets[2].addEventListener("toggle",
+            function () {
+                toggleFirstChildInnerHTML(this, "open", "", "Bibliography");
+                toggleClass(this, "open", "details-refs-aclass", "details-refs-bclass");
+            }
+        );
+
     </script>
 
     <script src="../js/main.js"></script><!-- Main JS file -->

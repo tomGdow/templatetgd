@@ -38,7 +38,7 @@
                     </div>
 
                     <div class="banner-item-2"><!-- [JavaScript automatically inserts] --></div>
-                    <div class="banner-item-3-alt"><!--pageNumbers. JavaScript automatically inserts --></div>
+                    <div class="banner-item-3-alt"><!--pageNumbers. JavaScript auto inserts --></div>
                     <div class="banner-item-3"><!-- [Use JavaScript (constants_variables.js)] --></div>
 
                 </div><!-- banner-->
@@ -63,7 +63,6 @@
                         repellendus nesciunt adipisci ratione ducimus dolorem ipsa dolores?
                     </p>
                 </article>
-                <!--here -->
 
                 <article>
                     <h1 class="count">Code Example</h1>
@@ -73,7 +72,9 @@
                         totam cupiditate. Mollitia voluptatem assumenda voluptatibus?
                     </p>
 
-                    <pre class="code-content">
+                    <details open><!--details CODE-->
+                        <summary class="details-code-summary">[JavaScript Inserts]</summary>
+                        <pre class="details-code-aclass">
 
 #include &lt;stdio.h&gt;
         
@@ -81,9 +82,13 @@ int main()
   {
     printf("Hello world\n");
   }</pre><!-- code-content -->
+                    </details><!--details CODE-->
 
                     <br class="small-view">
-                    <pre class="console small-view">
+                    <br class="wide-view">
+                    <details open><!--Details CONSOLE -->
+                        <summary class="details-console-summary">[JavaScript Inserts]</summary>
+                        <pre class="details-console-aclass small-view">
 
 clang helloworld.c -o 
     zhelloworld.o
@@ -92,8 +97,7 @@ clang helloworld.c -o
 
 // Hello world
                             </pre><!-- small-view -->
-                    <br class="wide-view">
-                    <pre class="console wide-view">
+                        <pre class="details-console-aclass wide-view">
 
 clang helloworld.c -o helloworld.o
 
@@ -102,7 +106,9 @@ clang helloworld.c -o helloworld.o
 // Hello world
                             </pre><!-- wide-view -->
                 </article>
-                <!--to here-->
+                </details><!--details CONSOLE -->
+
+
                 <article>
                     <h1 class="count">Notes</h1>
 
@@ -113,14 +119,17 @@ clang helloworld.c -o helloworld.o
                 </article>
 
                 <article>
+                    <h1 class="count refs-heading">References</h1>
+                    <details open><!-- Details REFS -->
+                        <summary class="details-refs-summary">[JavaScript Inserts]</summary>
+                        <div class="details-refs-aclass">
+                            <div class="ref">
+                                <a href="https://www.google.ie">Google</a>
+                            </div>
 
-                    <h1 class="count">References</h1>
-                    <div class="ref">
-                        <a href="https://www.google.ie">Google</a>
-                    </div>
-
+                        </div>
+                    </details><!-- Details REFS -->
                 </article>
-
             </main>
 
             <div class="aside-left">
@@ -154,10 +163,10 @@ clang helloworld.c -o helloworld.o
     <script>
 
         // page title
-        document.title = pageTitleArr[pageArr.indexOf(baseFileName)]
+        document.title = getPageTitle(pageTitleArr, pageArr, baseFileName);
 
         // banner-second-part
-        document.getElementsByClassName("banner-item-2")[0].innerHTML = "&nbsp;" + baseFileName.split("_").map((x) => capitalizeFirstLetter(x)).toString().replaceAll(",", " ");
+        document.getElementsByClassName("banner-item-2")[0].innerHTML = splitAndCapitalize(baseFileName);
 
         // banner-third-part
         document.getElementsByClassName("banner-item-3")[0].innerHTML = "&nbsp;" + bannerThirdPart;
@@ -169,7 +178,8 @@ clang helloworld.c -o helloworld.o
         nextPage.setAttribute("href", nextPageURL(baseFileName, pageArr));
 
         // previous page
-        prevPage.setAttribute("href", prevPageURL(baseFileName, pageArr));
+        prevPage.setAttribute("href", prevPageURL(baseFileName, pageArr, "./"));
+        // prevPage.setAttribute("href", prevPageURL(baseFileName, pageArr));[template-second-page-CHANGE]
 
         // aside-right event listeners
         document.getElementsByClassName("aside-right")[0].addEventListener('click', function () {
@@ -184,12 +194,13 @@ clang helloworld.c -o helloworld.o
 
         document.getElementsByClassName("aside-right")[0].addEventListener('mouseout', function () {
             displayNone("right-aside-icon");
-            setBackgroundColor(this.className, "lightblue", 0);
+            setBackgroundColor(this.className, "lightblue", 0)
         });
 
         // aside-left event listeners
         document.getElementsByClassName("aside-left")[0].addEventListener('click', function () {
             window.location.href = prevPageURL(baseFileName, pageArr, "./");
+            // window.location.href = prevPageURL(baseFileName, pageArr, "./");[Template-seond-page-CHANGE]
             setBackgroundColor(this.className, "lightblue", 0);
         });
 
@@ -203,10 +214,45 @@ clang helloworld.c -o helloworld.o
             setBackgroundColor(this.className, "lightblue", 0)
         });
 
-        // var nextPageURL = "./" + pageArr[pageArr.indexOf(baseFileName) + 1] + ".html"
-        // nextPage.setAttribute("href", nextPageURL);
-        // var prevPageURL = "./" + pageArr[pageArr.indexOf(baseFileName) - 1] + ".html"
-        // prevPage.setAttribute("href", prevPageURL);
+        // Conditionally remove "open" attribute from details tag 
+        let condition = window.matchMedia("(max-width: 440px)");
+        let targets = document.getElementsByTagName("details");
+        window.addEventListener("load",
+            function () {
+                condRemoveAttribute(condition, "details", 0, "open");
+                condRemoveAttribute(condition, "details", 1, "open");
+                condRemoveAttribute(condition, "details", 2, "open");
+
+                toggleFirstChildInnerHTML(targets[0], "open", "", "Code");
+                toggleFirstChildInnerHTML(targets[1], "open", "", "Console");
+                toggleFirstChildInnerHTML(targets[2], "open", "", "Bibliography");
+                toggleClass(targets[0], "open", "details-code-aclass", "details-code-bclass");
+                toggleClass(targets[1], "open", "details-console-aclass", "details-console-bclass");
+                toggleClass(targets[2], "open", "details-refs-aclass", "details-refs-bclass");
+            }
+        );
+
+        // Event Listeners on Details tags 
+        targets[0].addEventListener("toggle",
+            function () {
+                toggleFirstChildInnerHTML(this, "open", "", "Code");
+                toggleClass(this, "open", "details-code-aclass", "details-code-bclass");
+            }
+        );
+
+        targets[1].addEventListener("toggle",
+            function () {
+                toggleFirstChildInnerHTML(this, "open", "", "Console");
+                toggleClass(this, "open", "details-console-aclass", "details-console-bclass");
+            }
+        );
+
+        targets[2].addEventListener("toggle",
+            function () {
+                toggleFirstChildInnerHTML(this, "open", "", "Bibliography");
+                toggleClass(this, "open", "details-refs-aclass", "details-refs-bclass");
+            }
+        );
 
     </script>
 

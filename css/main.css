@@ -59,7 +59,6 @@ div.container {
   /*goodie*/
 }
 
-
 nav a {
   color: white;
   text-decoration: none;
@@ -172,14 +171,14 @@ article code {
 }
 
 .ref {
-  padding-left: 2em;
+  /* padding-left: 2em; */
   padding-bottom: 0.5em;
   font-size: 1.6rem;
 }
 
-.code-content,
-.console {
-  background-color: lightgray;
+.details-code-aclass,
+.details-console-aclass,
+.details-refs-aclass {
   display: flex;
   justify-content: left;
   width: 80%;
@@ -189,19 +188,81 @@ article code {
   border-radius: 10px;
 }
 
-.console {
+.details-code-aclass {
+  /* ADDED to details on CLOSE
+     REMOVED from details on OPEN
+     ALWAYS present on details>PRE tag */
+  background-color: lightgray;
+  color: black;
+  /*color on open*/
+
+  border-radius: 10px;
+}
+
+.details-code-summary {
+  color: black;
+}
+
+.details-code-bclass {
+  /* ADDED to SUMMARY childNode ON OPEN
+     REMOVED from SUMMARY tag ON CLOSE */
+  padding-left: 10%;
+  color: black;
+}
+
+
+.details-console-aclass {
+  /* ADDED to details on CLOSE
+     REMOVED from details on OPEN
+     ALWAYS present on details>PRE tag */
   color: white;
   background-color: darkblue;
   border-radius: 10px;
 }
 
-.console-small {
+.details-console-summary {
+  color: var(--primary-orange);
+  /* font-weight: bold; */
+}
+
+.details-console-bclass {
+  /* ADDED to SUMMARY childNode ON OPEN
+     REMOVED from SUMMARY tag ON CLOSE */
   padding-left: 10%;
   color: black;
 }
 
+.details-refs-aclass {
+  /* ADDED to details on CLOSE
+     REMOVED from details on OPEN
+     ALWAYS present on details>PRE tag
+  */
+  color: black;
+  border-radius: 10px;
+  /*color on open*/
+
+}
+
+.details-refs-summary {
+  color: black;
+  /* font-weight: bold; */
+}
+
+.details-refs-bclass {
+  /* ADDED to SUMMARY childNode ON OPEN
+     REMOVED from SUMMARY tag ON CLOSE */
+  padding-left: 10%;
+  color: black;
+}
+
+
 summary {
   color: var(--primary-orange);
+  /* padding-left: 10%; */
+}
+
+.refs-heading {
+  margin-bottom: 0;
 }
 
 .icount {
@@ -233,10 +294,12 @@ pre {
 
 .small-view {
   display: block;
+  margin-bottom: 1em;
 }
 
 .wide-view {
   display: none;
+  margin-bottom: 1em;
 }
 
 @media screen and (min-width:450px) {
@@ -249,8 +312,7 @@ pre {
     display: block;
   }
 
-
-  .console {
+  .details-console-aclass {
     color: white;
     background-color: black;
   }
@@ -339,8 +401,8 @@ pre {
     align-items: center;
   }
 
-  .code-content,
-  .console {
+  .details-code-oclass,
+  .details-console-oclass {
     width: 80%;
   }
 
