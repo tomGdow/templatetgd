@@ -173,7 +173,7 @@ article code {
 .ref {
   /* padding-left: 2em; */
   padding-bottom: 0.5em;
-  font-size: 1.2 rem;
+  font-size: 1.2rem;
 }
 
 .details-code-aclass,
@@ -232,20 +232,29 @@ article code {
   color: black;
 }
 
+
 .details-refs-aclass {
   /* ADDED to details on CLOSE
      REMOVED from details on OPEN
      ALWAYS present on details>PRE tag
   */
-  color: black;
+  /* border: 2px solid red; */
   border-radius: 10px;
+  background-color: darkblue;
+
   /*color on open*/
 
 }
 
+.ref-container {
+  background-color: revert;
+  margin-bottom: 2em;
+}
+
 .details-refs-summary {
-  color: black;
+  color: var(--primary-orange);
   /* font-weight: bold; */
+  /* margin-bottom: 2em; */
 }
 
 .details-refs-bclass {
@@ -300,6 +309,10 @@ pre {
 .wide-view {
   display: none;
   margin-bottom: 1em;
+}
+
+article:last-of-type {
+  margin-bottom: 0.5em;
 }
 
 @media screen and (min-width:450px) {
