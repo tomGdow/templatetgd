@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width initial-scale=1.0">
+  <title>Details Expt</title>
+  <link rel="stylesheet" href="./expt.css">
+</head>
+
+<body>
+  <div>
+    <details open>
+      <summary></summary>
+
+      <div class="main">
+        hello from main
+        <pre>
+          console.log();
+
+          console.log();
+
+        </pre>
+      </div>
+    </details>
+  </div>
+
+  <script>
+
+    let target_zero = document.getElementsByTagName("details")[0];
+
+    target_zero.addEventListener("toggle",
+      function () {
+        toggleFirstChildInnerHTML(this, "open", "", "Code");
+        toggleClass(this, "open", "close-class-a", "open-class-b");
+      }
+    );
+
+    function toggleClass(tag, attr = "open", cClass = "class_onClose", oClass = "class_onOpen") {
+      // cClass (close-class) is added when tag has NO attr "open" (details-closed, for example)
+      // oClass (open-class) is added when tag has no attr "open"  (details-open, for example)
+      if (tag.hasAttribute(attr)) {
+        tag.classList.remove(cClass);
+        tag.firstElementChild.classList.add(oClass);
+      } else {
+        tag.classList.add(cClass);
+        tag.firstElementChild.classList.remove(oClass);
+      }
+
+    }
+
+    function toggleFirstChildInnerHTML(parentTag, attr, attrHTML, noAttrHTML) {
+      if (parentTag.hasAttribute(attr)) {
+        parentTag.firstElementChild.innerHTML = attrHTML;
+      } else {
+        parentTag.firstElementChild.innerHTML = noAttrHTML;
+      }
+    }
+  </script>
+
+</body>
+
+</html>

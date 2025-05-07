@@ -1,0 +1,21 @@
+.sumclass {
+  /* color: red; */
+}
+
+.main {
+  background-color: black;
+  color: white;
+}
+
+.close-class-a {
+  /* border: 2px solid green; */
+  color: orange;
+  background-color: darkblue;
+  padding: 1em 0.4em;
+  /* add on close */
+}
+
+.open-class-b {
+  /* border: 5px solid red; */
+  /* add on open */
+}
