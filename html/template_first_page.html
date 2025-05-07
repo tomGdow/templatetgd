@@ -216,12 +216,19 @@ clang helloworld.c -o helloworld.o
 
         // Conditionally remove "open" attribute from details tag 
         let condition = window.matchMedia("(max-width: 440px)");
+        let conditionTwo = window.matchMedia("(min-width: 440px)");
         let targets = document.getElementsByTagName("details");
         window.addEventListener("load",
             function () {
+                // Use condition to REMOVE open attribute from 
+                // media with widths LESS THAN 440px (mobile)
                 condRemoveAttribute(condition, "details", 0, "open");
                 condRemoveAttribute(condition, "details", 1, "open");
                 condRemoveAttribute(condition, "details", 2, "open");
+
+                // Use condition to REMOVE open attribute from 
+                // media with widths GREATER THAN 440px
+                condRemoveAttribute(conditionTwo, "details", 1, "open");
 
                 toggleFirstChildInnerHTML(targets[0], "open", "", "Code");
                 toggleFirstChildInnerHTML(targets[1], "open", "", "Console");

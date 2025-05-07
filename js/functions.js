@@ -153,6 +153,7 @@ function condRemoveAttribute(condition, tagName, arrPosition, attribute = "open"
         document.getElementsByTagName(tagName)[arrPosition].removeAttribute(attribute);
     } else {
         console.log("condition does not match!")
+        return
     }
 }
 
