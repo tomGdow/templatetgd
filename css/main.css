@@ -249,6 +249,7 @@ article code {
 .ref-container {
   background-color: revert;
   margin-bottom: 2em;
+  flex-direction: column;
 }
 
 .details-refs-summary {
