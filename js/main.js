@@ -1,3 +1,4 @@
+'use strict'
 // page numbers
 document.getElementById("total_pages").innerHTML = "&nbsp;" + pageArr.length;
 document.getElementById("page_number").innerHTML = pageArr.indexOf(baseFileName) + 1 + "&nbsp;";

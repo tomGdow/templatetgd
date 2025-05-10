@@ -164,6 +164,7 @@ clang helloworld.c -o helloworld.o
     <script src="../js/constants_variables.js"></script><!-- JS Constants_variables -->
 
     <script>
+        'use strict'
 
         // page title
         document.title = getPageTitle(pageTitleArr, pageArr, baseFileName);
@@ -221,13 +222,19 @@ clang helloworld.c -o helloworld.o
         let condition = window.matchMedia("(max-width: 440px)");
         let conditionTwo = window.matchMedia("(min-width: 440px)");
         let targets = document.getElementsByTagName("details");
+
+        // let arr = Array.from(Array(3).keys());
+        // let oddsArr = arr.filter(el => el % 2 !== 0);
+        // let evensArr = arr.filter(el => el % 2 == 0);
+
         window.addEventListener("load",
             function () {
 
                 // Use condition to REMOVE open attribute from 
                 // media with widths LESS THAN max-width (440px) (mobile)
 
-                for (const el in [0, 1, 2]) {
+                for (const el of [0, 1, 2]) {
+                // or: for (const el of arr) {
                     condRemoveAttribute(condition, "details", el, "open");
                 }
 
@@ -235,15 +242,18 @@ clang helloworld.c -o helloworld.o
                 // media with widths GREATER THAN min-width (440px)
 
                 for (const el of [1]) {
+                // or: for (const el of oddsArr)
                     condRemoveAttribute(conditionTwo, "details", el, "open");
                 }
 
                 // toggle innerHTML
                 for (const el of [0]) {
+                // or: for (const el of evensArr)
                     toggleFirstChildInnerHTML(targets[el], "open", "", "Code");
                 }
 
                 for (const el of [1]) {
+                // or: for (const el of oddsArr)
                     toggleFirstChildInnerHTML(targets[el], "open", "", "Console");
                 }
 
@@ -251,10 +261,12 @@ clang helloworld.c -o helloworld.o
 
                 // Toggle classes
                 for (const el of [0]) {
+                // or: for (const of evensArr)
                     toggleClass(targets[el], "open", "details-code-aclass", "details-code-bclass");
                 }
 
                 for (const el of [1]) {
+                // or: for (const el of oddsArr)
                     toggleClass(targets[el], "open", "details-console-aclass", "details-console-bclass");
                 }
 
@@ -265,6 +277,7 @@ clang helloworld.c -o helloworld.o
         // Event Listeners on Details tags 
         // 1) CODE
         for (const el of [0]) {
+        // or: for (const el of evensArr)
             targets[el].addEventListener("toggle",
                 function () {
                     toggleFirstChildInnerHTML(this, "open", "", "Code");
@@ -275,6 +288,7 @@ clang helloworld.c -o helloworld.o
 
         // 2) CONSOLE
         for (const el of [1]) {
+        // or: for (const el of oddsArr)
             targets[el].addEventListener("toggle",
                 function () {
                     toggleFirstChildInnerHTML(this, "open", "", "Console");

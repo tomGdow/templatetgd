@@ -1,3 +1,4 @@
+'use strict'
 
 let baseFileName;
 baseFileName = getBaseFileName(baseFileName);
