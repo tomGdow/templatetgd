@@ -109,6 +109,32 @@ clang helloworld.c -o helloworld.o
                 </article>
 
                 <article>
+                    <h1 class="count">Code Example</h1>
+                    <details open><!--details CODE-->
+                        <summary class="details-code-summary">[JavaScript Inserts]</summary>
+                        <pre class="details-code-aclass">
+INSERT CODE
+  </pre><!-- code-content -->
+                    </details><!--details CODE-->
+
+                    <br class="small-view">
+                    <br class="wide-view">
+
+                    <details open><!--Details CONSOLE -->
+                        <summary class="details-console-summary">
+                            [JavaScript Inserts]
+                        </summary>
+                        <pre class="details-console-aclass small-view">
+INSERT CONSOLE OUTPUT (small view) 
+</pre><!-- small-view -->
+                        <pre class="details-console-aclass wide-view">
+INSERT CONSOLE OUTPUT (wide view) 
+</pre><!-- wide-view -->
+                    </details><!--details CONSOLE -->
+
+                </article>
+
+                <article>
                     <h1 class="count">Notes</h1>
 
                     <ol>
@@ -223,9 +249,10 @@ clang helloworld.c -o helloworld.o
         let conditionTwo = window.matchMedia("(min-width: 440px)");
         let targets = document.getElementsByTagName("details");
 
-        // let arr = Array.from(Array(3).keys());
-        // let oddsArr = arr.filter(el => el % 2 !== 0);
-        // let evensArr = arr.filter(el => el % 2 == 0);
+        let arr = Array.from(Array(targets.length).keys());
+        let oddsArr = arr.filter(el => el % 2 !== 0);
+        let evensArr = arr.filter(el => el % 2 == 0);
+        const biblioIndex = targets.length - 1;
 
         window.addEventListener("load",
             function () {
@@ -233,51 +260,51 @@ clang helloworld.c -o helloworld.o
                 // Use condition to REMOVE open attribute from 
                 // media with widths LESS THAN max-width (440px) (mobile)
 
-                for (const el of [0, 1, 2]) {
-                    // or: for (const el of arr) {
+                for (const el of arr) {
+                    // for (const el of [0, 1, 2]) {
                     condRemoveAttribute(condition, "details", el, "open");
                 }
 
                 // Use conditionTwo to REMOVE open attribute from 
                 // media with widths GREATER THAN min-width (440px)
 
-                for (const el of [1]) {
-                    // or: for (const el of oddsArr)
+                for (const el of oddsArr) {
+                    // for (const el of [1]) {
                     condRemoveAttribute(conditionTwo, "details", el, "open");
                 }
 
                 // toggle innerHTML
-                for (const el of [0]) {
-                    // or: for (const el of evensArr)
+                for (const el of evensArr) {
+                    // for (const el of [0]) {
                     toggleFirstChildInnerHTML(targets[el], "open", "", "Code");
                 }
 
-                for (const el of [1]) {
-                    // or: for (const el of oddsArr)
+                for (const el of oddsArr) {
+                    // for (const el of [1]) {
                     toggleFirstChildInnerHTML(targets[el], "open", "", "Console");
                 }
 
-                toggleFirstChildInnerHTML(targets[2], "open", "", "Bibliography");
+                toggleFirstChildInnerHTML(targets[biblioIndex], "open", "", "Bibliography");
 
                 // Toggle classes
-                for (const el of [0]) {
-                    // or: for (const of evensArr)
+                for (const el of evensArr) {
+                    // for (const el of [0]) {
                     toggleClass(targets[el], "open", "details-code-aclass", "details-code-bclass");
                 }
 
-                for (const el of [1]) {
-                    // or: for (const el of oddsArr)
+                for (const el of oddsArr) {
+                    // for (const el of [1]) {
                     toggleClass(targets[el], "open", "details-console-aclass", "details-console-bclass");
                 }
 
-                toggleClass(targets[2], "open", "details-refs-aclass", "details-refs-bclass");
+                toggleClass(targets[biblioIndex], "open", "details-refs-aclass", "details-refs-bclass");
             }
         );
 
         // Event Listeners on Details tags 
         // 1) CODE
-        for (const el of [0]) {
-            // or: for (const el of evensArr)
+        for (const el of evensArr) {
+            // for (const el of [0]) {
             targets[el].addEventListener("toggle",
                 function () {
                     toggleFirstChildInnerHTML(this, "open", "", "Code");
@@ -287,8 +314,8 @@ clang helloworld.c -o helloworld.o
         }
 
         // 2) CONSOLE
-        for (const el of [1]) {
-            // or: for (const el of oddsArr)
+        for (const el of oddsArr) {
+            // for (const el of [1]) {
             targets[el].addEventListener("toggle",
                 function () {
                     toggleFirstChildInnerHTML(this, "open", "", "Console");
@@ -298,7 +325,7 @@ clang helloworld.c -o helloworld.o
         }
 
         // 3) BIBLIOGRAPHY
-        targets[2].addEventListener("toggle",
+        targets[biblioIndex].addEventListener("toggle",
             function () {
                 toggleFirstChildInnerHTML(this, "open", "", "Bibliography");
                 toggleClass(this, "open", "details-refs-aclass", "details-refs-bclass");
