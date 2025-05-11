@@ -7,10 +7,10 @@ baseFileName = getBaseFileName(baseFileName);
 // }
 
 //Add New FileName(s)
-let pageArr = ["index", "template_first_page", "template_second_page"];
+let pageArr = ["index", "template_first_page", "template_second_page","questions_template"];
 pageArr.push("search"); // 'search' should be the last term in pageArr
 
-let pageTitleArr = ["ckr-index", "ckr-template", "ckr-template-two", "ckr-search"];
+let pageTitleArr = ["ckr-index", "ckr-template", "ckr-template-two", "qstns", "ckr-search"];
 
 // Add banner third part
 const bannerThirdPart = "bannerPart3";
