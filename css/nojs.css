@@ -1,0 +1,17 @@
+noscript {
+    background-color: red;
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+    border-radius: 10px;
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+:root {
+    background-color: wheat;
+    font-size: 1rem;
+}
