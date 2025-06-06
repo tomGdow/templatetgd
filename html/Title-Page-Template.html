@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>[PAGE TITLE]</title><!-- Use JavaScript (constants_variables.js)-->
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <meta name="keywords" content="TO,DO">
+    <meta name="description" content="TO DO">
+    <meta name="google" content="notranslate">
+    <link rel="icon" type="image/x-icon" href="https://s.gravatar.com/avatar/1670879794aed7c23742e5b1f759be94?s=40">
+
+    <link rel="stylesheet" href="../css/main.css"><!-- EXTERNAL STYLESHEET -->
+
+    <style>
+        @import url("../css/counters.css");
+    </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+
+    <noscript>
+        <link rel="stylesheet" href="../css/nojs.css">
+    </noscript>
+    <style>
+        main {
+            min-height: 80vh;
+            display:flex;
+            justify-content:center;
+            align-items: center;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="grid-container">
+            <header class="main_header">
+                <div class="banner">
+
+                    <div class="banner-item-1">
+                        <a href="https://tomgdow.com">
+                            <img src="https://s.gravatar.com/avatar/1670879794aed7c23742e5b1f759be94?s=40"
+                                alt="gravatar image of tomgdow">
+                        </a>
+                    </div>
+
+                    <div class="banner-item-2"><!-- [JavaScript automatically inserts] --></div>
+                    <div class="banner-item-3-alt"><!--pageNumbers. JavaScript auto inserts --></div>
+                    <div class="banner-item-3"><!-- [Use JavaScript (constants_variables.js)] --></div>
+
+                </div><!-- banner-->
+            </header>
+
+            <nav>
+                <a href="../index.html" accesskey="h">home</a>
+                <a href="PREV.html" id="prevPage" accesskey="p">prev</a>
+                <a href="NEXT.html" id="nextPage" accesskey="n">next</a>
+                <a href="../html/search.html" accesskey="s">search</a>
+            </nav>
+
+            <div class="aside-right">
+                <div class="right-aside-icon">&raquo;</div>
+            </div><!--aside-right -->
+
+            <main>
+                <article>
+                    <noscript><span>This Web Site requires JavaScript!</span></noscript>
+                    <h1>
+                      INSERT TITLE
+                    </h1>
+                </article>
+
+            </main>
+
+            <div class="aside-left">
+                <div class="left-aside-icon">&laquo;</div>
+            </div>
+
+            <footer>
+
+                <div class="footer-item-1">
+                    <a href="https://tomgdow.com">
+                        <img src="https://s.gravatar.com/avatar/1670879794aed7c23742e5b1f759be94?s=40"
+                            alt="gravatar image of tomgdow">
+                    </a>
+                </div>
+
+                <div class="footer-item-2">
+                    <span id="page_number"></span> of <span id="total_pages"></span>
+                </div>
+
+                <div class="footer-item-3">[Footer-3]</div><!-- [JavaScript automatically inserts] -->
+
+            </footer>
+
+        </div><!-- grid-container -->
+
+    </div><!--container-->
+
+    <script src="../js/functions.js"></script><!-- JS Functions-->
+    <script src="../js/constants_variables.js"></script><!-- JS Constants_variables -->
+
+    <script>
+        'use strict'
+
+        // page title
+        document.title = getPageTitle(pageTitleArr, pageArr, baseFileName);
+
+        // banner-second-part
+        document.getElementsByClassName("banner-item-2")[0].innerHTML = splitAndCapitalize(baseFileName);
+
+        // banner-third-part
+        document.getElementsByClassName("banner-item-3")[0].innerHTML = "&nbsp;" + bannerThirdPart;
+
+        // footer-third-part
+        document.getElementsByClassName("footer-item-3")[0].innerHTML = "&nbsp;" + baseFileName;
+
+        // next page
+        nextPage.setAttribute("href", nextPageURL(baseFileName, pageArr));
+
+        // previous page
+        prevPage.setAttribute("href", prevPageURL(baseFileName, pageArr, "./"));
+        // prevPage.setAttribute("href", prevPageURL(baseFileName, pageArr));[template-second-page-CHANGE]
+
+        // aside-right event listeners
+        document.getElementsByClassName("aside-right")[0].addEventListener('click', function () {
+            window.location.href = nextPageURL(baseFileName, pageArr, "./");
+            setBackgroundColor(this.className, "lightblue", 0);
+        });
+
+        document.getElementsByClassName("aside-right")[0].addEventListener('mouseover', function () {
+            displayBlock("right-aside-icon");
+            setBackgroundColor(this.className, "#8cc8dc", 0)
+        });
+
+        document.getElementsByClassName("aside-right")[0].addEventListener('mouseout', function () {
+            displayNone("right-aside-icon");
+            setBackgroundColor(this.className, "lightblue", 0)
+        });
+
+        // aside-left event listeners
+        document.getElementsByClassName("aside-left")[0].addEventListener('click', function () {
+            window.location.href = prevPageURL(baseFileName, pageArr, "./");
+            // window.location.href = prevPageURL(baseFileName, pageArr, "./");[Template-seond-page-CHANGE]
+            setBackgroundColor(this.className, "lightblue", 0);
+        });
+
+        document.getElementsByClassName("aside-left")[0].addEventListener('mouseover', function () {
+            displayBlock("left-aside-icon");
+            setBackgroundColor(this.className, "#8cc8dc", 0)
+        });
+
+        document.getElementsByClassName("aside-left")[0].addEventListener('mouseout', function () {
+            displayNone("left-aside-icon");
+            setBackgroundColor(this.className, "lightblue", 0)
+        });
+
+        // Conditionally remove "open" attribute from details tag 
+        let condition = window.matchMedia("(max-width: 440px)");
+        let conditionTwo = window.matchMedia("(min-width: 440px)");
+        let targets = document.getElementsByTagName("details");
+
+        let arr = Array.from(Array(targets.length).keys());
+        let oddsArr = arr.filter(el => el % 2 !== 0);
+        let evensArr = arr.filter(el => el % 2 == 0);
+        const biblioIndex = targets.length - 1;
+
+        window.addEventListener("load",
+            function () {
+
+                // Use condition to REMOVE open attribute from 
+                // media with widths LESS THAN max-width (440px) (mobile)
+
+                for (const el of arr) {
+                    // for (const el of [0, 1, 2]) {
+                    condRemoveAttribute(condition, "details", el, "open");
+                }
+
+                // Use conditionTwo to REMOVE open attribute from 
+                // media with widths GREATER THAN min-width (440px)
+
+                for (const el of oddsArr) {
+                    // for (const el of [1]) {
+                    condRemoveAttribute(conditionTwo, "details", el, "open");
+                }
+
+                // toggle innerHTML
+                for (const el of evensArr) {
+                    // for (const el of [0]) {
+                    toggleFirstChildInnerHTML(targets[el], "open", "", "Code");
+                }
+
+                for (const el of oddsArr) {
+                    // for (const el of [1]) {
+                    toggleFirstChildInnerHTML(targets[el], "open", "", "Console");
+                }
+
+                toggleFirstChildInnerHTML(targets[biblioIndex], "open", "", "Bibliography");
+
+                // Toggle classes
+                for (const el of evensArr) {
+                    // for (const el of [0]) {
+                    toggleClass(targets[el], "open", "details-code-aclass", "details-code-bclass");
+                }
+
+                for (const el of oddsArr) {
+                    // for (const el of [1]) {
+                    toggleClass(targets[el], "open", "details-console-aclass", "details-console-bclass");
+                }
+
+                toggleClass(targets[biblioIndex], "open", "details-refs-aclass", "details-refs-bclass");
+            }
+        );
+
+        // Event Listeners on Details tags 
+        // 1) CODE
+        for (const el of evensArr) {
+            // for (const el of [0]) {
+            targets[el].addEventListener("toggle",
+                function () {
+                    toggleFirstChildInnerHTML(this, "open", "", "Code");
+                    toggleClass(this, "open", "details-code-aclass", "details-code-bclass");
+                }
+            );
+        }
+
+        // 2) CONSOLE
+        for (const el of oddsArr) {
+            // for (const el of [1]) {
+            targets[el].addEventListener("toggle",
+                function () {
+                    toggleFirstChildInnerHTML(this, "open", "", "Console");
+                    toggleClass(this, "open", "details-console-aclass", "details-console-bclass");
+                }
+            );
+        }
+
+        // 3) BIBLIOGRAPHY
+        targets[biblioIndex].addEventListener("toggle",
+            function () {
+                toggleFirstChildInnerHTML(this, "open", "", "Bibliography");
+                toggleClass(this, "open", "details-refs-aclass", "details-refs-bclass");
+            }
+        );
+
+    </script>
+
+    <script src="../js/main.js"></script><!-- Main JS file -->
+
+</body>
+
+</html>
